@@ -36,8 +36,6 @@ export class AddressSuggestionsService {
     return this.candidates;
   }
 
-  // https://geo.traviscountytx.gov/arcgis/rest/services/Address_Locator_composite/GeocodeServer/findAddressCandidates?f=json&singleLine=700%20Lavaca%20St&outfields=Match_addr,Addr_type=PointAddress
-
   getAddressSuggestion(id: number): Observable<IAddress | undefined> {
     return this.getAddressSuggestions(this.addressSuggestionsUrl).pipe(
       map((addresses: IAddress[]) => addresses.find((a) => a.addressId === id))
