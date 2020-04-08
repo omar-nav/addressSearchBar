@@ -1,0 +1,50 @@
+{
+  "spatialReference": { "wkid": 102739, "latestWkid": 2277 },
+  "candidates": [
+    {
+      "address": "700 LAVACA ST",
+      "location": { "x": 3113530.7980889622, "y": 10071563.843624946 },
+      "score": 100,
+      "attributes": {
+        "Match_addr": "700 LAVACA ST",
+        "Addr_type": "PointAddress"
+      },
+      "extent": {
+        "xmin": 3112874.6314222957,
+        "ymin": 10070907.67695828,
+        "xmax": 3114186.9647556287,
+        "ymax": 10072220.010291612
+      }
+    },
+    {
+      "address": "700 LAVACA ST",
+      "location": { "x": 3113652.4094356676, "y": 10071352.092822678 },
+      "score": 100,
+      "attributes": {
+        "Match_addr": "700 LAVACA ST",
+        "Addr_type": "StreetAddress"
+      },
+      "extent": {
+        "xmin": 3112996.2427690011,
+        "ymin": 10070695.926156012,
+        "xmax": 3114308.5761023341,
+        "ymax": 10072008.259489344
+      }
+    },
+    {
+      "address": "701 LAVACA ST",
+      "location": { "x": 3113671.2033445989, "y": 10071346.237208955 },
+      "score": 79,
+      "attributes": {
+        "Match_addr": "701 LAVACA ST",
+        "Addr_type": "StreetAddress"
+      },
+      "extent": {
+        "xmin": 3113015.0366779324,
+        "ymin": 10070690.070542289,
+        "xmax": 3114327.3700112654,
+        "ymax": 10072002.403875621
+      }
+    }
+  ]
+}
