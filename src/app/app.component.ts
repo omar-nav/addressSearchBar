@@ -79,7 +79,6 @@ export class AppComponent {
       let addressId = i;
       this.addresses[i][addressColumn] = addressId;
     }
-
   }
 
   fetch(term: string): Observable<any> {
