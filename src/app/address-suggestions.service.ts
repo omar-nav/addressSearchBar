@@ -14,27 +14,32 @@ export class AddressSuggestionsService {
     'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=';
   public candidates: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
-  getAddressSuggestions(searchString): Observable<IAddress[]> {
-    this.http
-      .get<IAddress[]>(
-        `${this.addressSuggestionsUrl}${searchString}&outfields=Match_addr,Addr_type=PointAddress`
-      )
-      .pipe(
-        map(
-          (response) =>
-            (this.candidates = response['candidates'])
-        )
-      )
-      .pipe(
-        tap((data) =>
-          console.log('Address suggestions: ' + JSON.stringify(data))
-        ),
-        catchError(this.handleError)
-      );
-    return this.candidates;
+  getAddressSuggestions(term: string): Observable<any> {
+    return this.httpClient.get(
+      'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=' +
+        term +
+        '&outfields=Match_addr,Addr_type=PointAddress'
+    );
   }
+  // this.http
+  //   .get<IAddress[]>(
+  //     `${this.addressSuggestionsUrl}${searchString}&outfields=Match_addr,Addr_type=PointAddress`
+  //   )
+  //   .pipe(
+  //     map(
+  //       (response) =>
+  //         (this.candidates = response['candidates'])
+  //     )
+  //   )
+  //   .pipe(
+  //     tap((data) =>
+  //       console.log('Address suggestions: ' + JSON.stringify(data))
+  //     ),
+  //     catchError(this.handleError)
+  //   );
+  // return this.candidates;
 
   getAddressSuggestion(id: number): Observable<IAddress | undefined> {
     return this.getAddressSuggestions(this.addressSuggestionsUrl).pipe(

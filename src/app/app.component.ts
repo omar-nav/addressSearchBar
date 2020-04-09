@@ -45,10 +45,7 @@ export class AppComponent {
   // filteredAddresses: IAddress[] = [];
   // addresses: IAddress[] = [];
 
-  constructor(
-    private httpClient: HttpClient,
-    private addressSuggestionsService: AddressSuggestionsService
-  ) {}
+  constructor(private addressSuggestionsService: AddressSuggestionsService) {}
   // performFilter(filterBy: string): IAddress[] {
   //   filterBy = filterBy.toLocaleLowerCase();
   //   console.log(
@@ -73,11 +70,7 @@ export class AppComponent {
   // }
 
   fetch(term: string): Observable<any> {
-    return this.httpClient.get(
-      'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=' +
-        term +
-        '&outfields=Match_addr,Addr_type=PointAddress'
-    );
+    return this.addressSuggestionsService.getAddressSuggestions(term);
   }
 
   // fetch(term: string): Observable<any> {
