@@ -37,13 +37,16 @@ const autocomplete = (time, selector) => (source$) =>
 })
 export class AppComponent {
   term$ = new BehaviorSubject<string>('');
-  results$ = this.term$.pipe(autocomplete(1000, (term) => this.fetch(term)));
+  results$ = this.term$.pipe(autocomplete(500, (term) => this.fetch(term)));
+  addresses$ = this.results$.pipe(
+    autocomplete(500, (results) => this.cleanUp(results))
+  );
 
+  addresses: IAddress[] = [];
   // _listFilter = '';
   // errorMessage = '';
 
   // filteredAddresses: IAddress[] = [];
-  // addresses: IAddress[] = [];
 
   constructor(private addressSuggestionsService: AddressSuggestionsService) {}
   // performFilter(filterBy: string): IAddress[] {
@@ -68,6 +71,16 @@ export class AppComponent {
   //     ? this.performFilter(this.listFilter)
   //     : this.addresses;
   // }
+
+  cleanUp(results: Observable<any>): void {
+    for (let i = 0; i < results["candidates"].length; i++) {
+      this.addresses.push(results["candidates"].length);
+      let addressColumn = 'addressId';
+      let addressId = i;
+      this.addresses[i][addressColumn] = addressId;
+    }
+
+  }
 
   fetch(term: string): Observable<any> {
     return this.addressSuggestionsService.getAddressSuggestions(term);
