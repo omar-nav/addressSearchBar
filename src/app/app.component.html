@@ -1,19 +1,24 @@
-<!-- <mat-form-field>
-  <input type="text" (input)="term$.next($event.target.value)"
-  placeholder="Enter Address" matInput
-  [matAutocomplete]="auto"/>
-  [(ngModel)]='listFilter' [matAutocomplete]="auto"/>
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let address of filteredAddresses">
-      <mat-option>
-      {{ address.address | async}}
-      {{ results$ | async | json }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field> -->
+<div class="container">
+  <form>
+    <div class="form-group search-bar">
+      <!-- Search -->
+      <input type="text" class="form-control" placeholder="Search..." #searchBox (input)="search(searchBox.value)">
 
-<input type="text" (input)="term$.next($event.target.value)" />
-{{ term$ | async }}
-<pre>
-  {{ results$ | async | json }}
-</pre>
+      <!-- Progres -->
+      <div class="loader" *ngIf="loading">
+        <div class="c-three-dots-loader"></div>
+      </div>
+    </div>
+
+    <!-- Search Result -->
+    <div class="list-group">
+      <div class="list-group-item list-group-item-action" *ngFor="let address of addresses$ | async">
+        <div class="media">
+          <div class="media-body">
+            <p class="mt-0">{{ address }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
