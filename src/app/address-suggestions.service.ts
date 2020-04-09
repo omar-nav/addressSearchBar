@@ -9,19 +9,13 @@ import { IAddress } from './address';
   providedIn: 'root',
 })
 export class AddressSuggestionsService {
-  // private addressSuggestionsUrl = 'api/addressSuggestions/suggestions.json';
   private addressSuggestionsUrl =
     'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=';
-  public candidates: any;
 
   constructor(private httpClient: HttpClient) {}
 
   getAddressSuggestions(term: string): Observable<any> {
-    return this.httpClient.get(
-      'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=' +
-        term +
-        '&outfields=Match_addr,Addr_type=PointAddress'
-    );
+    return this.httpClient.get(`${this.addressSuggestionsUrl}${term}&outfields=Match_addr,Addr_type=PointAddress`);
   }
   // this.http
   //   .get<IAddress[]>(
