@@ -13,12 +13,21 @@
     <!-- Search Result -->
     <div class="list-group">
       <div class="list-group-item list-group-item-action" *ngFor="let address of addresses$ | async">
-        <div class="media">
-          <div class="media-body">
-            <p class="mt-0">{{ address }}</p>
-          </div>
-        </div>
+            <p class="mt-0">{{ address.address }}</p>
+            <!-- <p class="mt-0">{{ address.location }}</p>
+            <p class="mt-0">{{ address.score }}</p> -->
       </div>
     </div>
   </form>
 </div>
+
+<!--
+
+export class Address {
+  public address: string;
+  public location: any;
+  public score: number;
+}
+
+
+ -->

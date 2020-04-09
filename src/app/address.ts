@@ -1,3 +1,5 @@
 export class Address {
-  public candidates: object[];
+  public address: string;
+  public location: any;
+  public score: number;
 }
