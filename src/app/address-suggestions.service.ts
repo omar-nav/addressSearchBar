@@ -15,7 +15,8 @@ export class AddressSuggestionsService {
   constructor(private httpClient: HttpClient) {}
 
   searchAddress(term: string): Observable<Address[]> {
-    let url = `${this.endpoint}${term}&outfields=Match_addr,Addr_type=PointAddress`;
+    let url = `${this.endpoint}${term}&maxLocations=5&location=30.270,-97.745&distance=80467.2`;
+
     if (!term.trim()) {
       return of([]);
     }
