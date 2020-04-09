@@ -2,7 +2,7 @@
   <form>
     <div class="form-group search-bar">
       <!-- Search -->
-      <input type="text" class="form-control" placeholder="Search..." #searchBox (input)="search(searchBox.value)">
+      <input type="text" class="form-control" placeholder="Enter Address" #searchBox (input)="search(searchBox.value)">
 
       <!-- Progres -->
       <div class="loader" *ngIf="loading">

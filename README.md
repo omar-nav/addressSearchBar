@@ -1,3 +1,5 @@
+![search bar for addresses with suggestions from ESRI](https://res.cloudinary.com/davd4ynha/image/upload/v1586473598/addressSearchBar.gif)
+
 # AngularAutocompleteApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
